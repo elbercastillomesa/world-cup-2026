@@ -1,0 +1,53 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if the user is an admin
+    function isAdmin() {
+      return request.auth != null && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+    }
+
+    // User Profiles Rules
+    match /users/{userId} {
+      allow read: if request.auth != null;
+      // Allow user to write to their own profile document (e.g., set up profile on login)
+      // Or allow admins to modify (to update scores/points)
+      allow write: if request.auth != null && (request.auth.uid == userId || isAdmin());
+    }
+
+    // Matches Rules
+    match /matches/{matchId} {
+      allow read: if request.auth != null;
+      // Only admins can create/update/delete matches
+      allow write: if isAdmin();
+    }
+
+    // Predictions Rules
+    match /predictions/{predId} {
+      // Allow reading predictions if:
+      // 1. It belongs to the current user
+      // 2. The match has already kicked off (preventing cheating before kickoff)
+      // 3. The current user is an admin
+      allow read: if request.auth != null && (
+        resource.data.uid == request.auth.uid || 
+        get(/databases/$(database)/documents/matches/$(resource.data.matchId)).data.kickoff <= request.time ||
+        isAdmin()
+      );
+
+      // Allow creating/updating predictions if:
+      // 1. It is for the current user
+      // 2. The match hasn't started yet (kickoff time is in the future)
+      // Or if the current user is an admin
+      allow write: if request.auth != null && (
+        (
+          request.resource.data.uid == request.auth.uid && 
+          get(/databases/$(database)/documents/matches/{matchId}).data.kickoff > request.time
+        ) || 
+        isAdmin()
+      );
+    }
+  }
+}
