@@ -3,7 +3,8 @@ import {
   signInWithPopup, 
   signInWithEmailAndPassword, 
   createUserWithEmailAndPassword, 
-  updateProfile 
+  updateProfile,
+  sendPasswordResetEmail
 } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, googleProvider, db } from "../firebase";
@@ -22,6 +23,11 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess, onViewTopScorers }
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [resetMode, setResetMode] = useState(false);
+  const [resetEmail, setResetEmail] = useState("");
+  const [resetMsg, setResetMsg] = useState("");
+  const [resetErr, setResetErr] = useState("");
+  const [resetLoading, setResetLoading] = useState(false);
 
   const initUserDocument = async (user: any, customName?: string) => {
     const userDocRef = doc(db, "users", user.uid);
@@ -182,6 +188,68 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess, onViewTopScorers }
         >
           {t("view_top_scores")}
         </button>
+      )}
+
+      {/* Password reset UI */}
+      {!resetMode ? (
+        <div style={{ marginTop: "0.85rem", textAlign: "center" }}>
+          <button
+            type="button"
+            className="btn-secondary"
+            onClick={() => { setResetMode(true); setResetErr(""); setResetMsg(""); setResetEmail(email); }}
+            style={{ background: "none", border: "none", color: "var(--color-primary)", cursor: "pointer", fontWeight: 600 }}
+          >
+            {t("forgot_password")}
+          </button>
+        </div>
+      ) : (
+        <div style={{ marginTop: "0.85rem", display: "flex", gap: "0.5rem", alignItems: "center" }}>
+          <input
+            className="form-input"
+            type="email"
+            placeholder={t("enter_email")}
+            value={resetEmail}
+            onChange={(e) => setResetEmail(e.target.value)}
+            style={{ flex: 1 }}
+          />
+          <button
+            className="btn btn-primary"
+            type="button"
+            onClick={async () => {
+              setResetErr("");
+              setResetMsg("");
+              setResetLoading(true);
+              try {
+                if (!resetEmail) throw new Error(t("enter_email"));
+                await sendPasswordResetEmail(auth, resetEmail);
+                setResetMsg(t("reset_sent"));
+              } catch (err: any) {
+                console.error(err);
+                setResetErr(err.message || t("reset_error"));
+              } finally {
+                setResetLoading(false);
+              }
+            }}
+            disabled={resetLoading}
+          >
+            {resetLoading ? "..." : t("send_reset")}
+          </button>
+          <button
+            className="btn btn-secondary"
+            type="button"
+            onClick={() => { setResetMode(false); setResetErr(""); setResetMsg(""); }}
+            style={{ marginLeft: "0.25rem" }}
+          >
+            {t("cancel")}
+          </button>
+        </div>
+      )}
+
+      {resetMsg && (
+        <div style={{ marginTop: "0.5rem", color: "var(--color-primary)", fontSize: "0.95rem" }}>{resetMsg}</div>
+      )}
+      {resetErr && (
+        <div style={{ marginTop: "0.5rem", color: "#ef4444", fontSize: "0.95rem" }}>{resetErr}</div>
       )}
 
       <div className="text-center" style={{ marginTop: "1.5rem" }}>

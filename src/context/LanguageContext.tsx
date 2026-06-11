@@ -64,6 +64,12 @@ const translations: TranslationDictionary = {
   top_scores_title: { es: "Mejores puntajes", en: "Top Scorers" },
   top_scores_subtitle: { es: "Mira quién está liderando con la mejor puntuación", en: "See who is leading with the highest points" },
   top_scores_no_users: { es: "No hay puntajes para mostrar todavía.", en: "No scores to display yet." },
+  forgot_password: { es: "¿Olvidaste tu contraseña?", en: "Forgot your password?" },
+  enter_email: { es: "Ingresa tu correo electrónico", en: "Enter your email" },
+  send_reset: { es: "Enviar enlace", en: "Send reset" },
+  reset_sent: { es: "Se ha enviado un enlace para restablecer tu contraseña.", en: "Password reset link sent." },
+  reset_error: { es: "Error al enviar el enlace. Revisa el correo e inténtalo de nuevo.", en: "Error sending reset link. Check the email and try again." },
+  cancel: { es: "Cancelar", en: "Cancel" },
 
   // Rules view
   rules_title: { es: "Reglamento del Juego", en: "Game Rules" },
