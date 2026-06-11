@@ -8,6 +8,7 @@ import Dashboard from "./components/Dashboard";
 import Leaderboard from "./components/Leaderboard";
 import Rules from "./components/Rules";
 import Admin from "./components/Admin";
+import TopScorers from "./components/TopScorers";
 import { Calendar, Trophy, HelpCircle, Shield, LogOut } from "lucide-react";
 
 export const AppContent: React.FC = () => {
@@ -15,7 +16,7 @@ export const AppContent: React.FC = () => {
   const [user, setUser] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<"matches" | "leaderboard" | "rules" | "admin">("matches");
+  const [activeTab, setActiveTab] = useState<"matches" | "leaderboard" | "rules" | "admin" | "topScorers">("matches");
 
   // Handle Firebase Auth state changes
   useEffect(() => {
@@ -155,7 +156,23 @@ export const AppContent: React.FC = () => {
 
       {/* Main Content Areas */}
       {!user ? (
-        <Login onLoginSuccess={() => setActiveTab("matches")} />
+        activeTab === "topScorers" ? (
+          <div style={{ maxWidth: "900px", margin: "2rem auto 0" }}>
+            <TopScorers />
+            <div style={{ textAlign: "center", marginTop: "1rem" }}>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => setActiveTab("matches")}
+                style={{ minWidth: "180px" }}
+              >
+                {t("back_to_login")}
+              </button>
+            </div>
+          </div>
+        ) : (
+          <Login onLoginSuccess={() => setActiveTab("matches")} onViewTopScorers={() => setActiveTab("topScorers")} />
+        )
       ) : (
         <main>
           {/* Navigation Tabs bar */}
@@ -204,6 +221,7 @@ export const AppContent: React.FC = () => {
           <div style={{ marginTop: "1rem" }}>
             {activeTab === "matches" && <Dashboard currentUser={user} />}
             {activeTab === "leaderboard" && <Leaderboard currentUser={user} />}
+            {activeTab === "topScorers" && <TopScorers />}
             {activeTab === "rules" && <Rules />}
             {activeTab === "admin" && profile?.isAdmin && <Admin />}
           </div>

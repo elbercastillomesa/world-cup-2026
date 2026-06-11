@@ -2,232 +2,321 @@ import { Timestamp } from "firebase/firestore";
 
 export const seedData = [
 
-  // ======================
-  // GRUPO A
-  // ======================
-  {
-    id: "seed_1",
-    homeTeam: "México",
-    awayTeam: "Sudáfrica",
-    homeFlag: "🇲🇽",
-    awayFlag: "🇿🇦",
-    stage: "Grupo A",
-    kickoff: Timestamp.fromDate(new Date("2026-06-11T13:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  },
-  {
-    id: "seed_2",
-    homeTeam: "Corea del Sur",
-    awayTeam: "República Checa",
-    homeFlag: "🇰🇷",
-    awayFlag: "🇨🇿",
-    stage: "Grupo A",
-    kickoff: Timestamp.fromDate(new Date("2026-06-11T20:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  },
-  {
-    id: "seed_3",
-    homeTeam: "México",
-    awayTeam: "Corea del Sur",
-    homeFlag: "🇲🇽",
-    awayFlag: "🇰🇷",
-    stage: "Grupo A",
-    kickoff: Timestamp.fromDate(new Date("2026-06-18T20:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  },
-  {
-    id: "seed_4",
-    homeTeam: "República Checa",
-    awayTeam: "Sudáfrica",
-    homeFlag: "🇨🇿",
-    awayFlag: "🇿🇦",
-    stage: "Grupo A",
-    kickoff: Timestamp.fromDate(new Date("2026-06-18T12:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  },
-  {
-    id: "seed_5",
-    homeTeam: "Sudáfrica",
-    awayTeam: "Corea del Sur",
-    homeFlag: "🇿🇦",
-    awayFlag: "🇰🇷",
-    stage: "Grupo A",
-    kickoff: Timestamp.fromDate(new Date("2026-06-24T20:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  },
-  {
-    id: "seed_6",
-    homeTeam: "República Checa",
-    awayTeam: "México",
-    homeFlag: "🇨🇿",
-    awayFlag: "🇲🇽",
-    stage: "Grupo A",
-    kickoff: Timestamp.fromDate(new Date("2026-06-24T20:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  },
+    // ======================
+    // GRUPO A
+    // ======================
+    {
+        id: "seed_1",
+        homeTeam: "México",
+        awayTeam: "Sudáfrica",
+        homeFlag: "🇲🇽",
+        awayFlag: "🇿🇦",
+        stage: "Grupo A",
+        kickoff: Timestamp.fromDate(new Date("2026-06-11T13:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
+    {
+        id: "seed_2",
+        homeTeam: "Corea del Sur",
+        awayTeam: "República Checa",
+        homeFlag: "🇰🇷",
+        awayFlag: "🇨🇿",
+        stage: "Grupo A",
+        kickoff: Timestamp.fromDate(new Date("2026-06-11T20:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
+    {
+        id: "seed_3",
+        homeTeam: "México",
+        awayTeam: "Corea del Sur",
+        homeFlag: "🇲🇽",
+        awayFlag: "🇰🇷",
+        stage: "Grupo A",
+        kickoff: Timestamp.fromDate(new Date("2026-06-18T20:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
+    {
+        id: "seed_4",
+        homeTeam: "República Checa",
+        awayTeam: "Sudáfrica",
+        homeFlag: "🇨🇿",
+        awayFlag: "🇿🇦",
+        stage: "Grupo A",
+        kickoff: Timestamp.fromDate(new Date("2026-06-18T12:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
+    {
+        id: "seed_5",
+        homeTeam: "Sudáfrica",
+        awayTeam: "Corea del Sur",
+        homeFlag: "🇿🇦",
+        awayFlag: "🇰🇷",
+        stage: "Grupo A",
+        kickoff: Timestamp.fromDate(new Date("2026-06-24T20:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
+    {
+        id: "seed_6",
+        homeTeam: "República Checa",
+        awayTeam: "México",
+        homeFlag: "🇨🇿",
+        awayFlag: "🇲🇽",
+        stage: "Grupo A",
+        kickoff: Timestamp.fromDate(new Date("2026-06-24T20:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
 
-  // ======================
-  // GRUPO B
-  // ======================
-  {
-    id: "seed_7",
-    homeTeam: "Canadá",
-    awayTeam: "Bosnia y Herzegovina",
-    homeFlag: "🇨🇦",
-    awayFlag: "🇧🇦",
-    stage: "Grupo B",
-    kickoff: Timestamp.fromDate(new Date("2026-06-12T13:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  },
-  {
-    id: "seed_8",
-    homeTeam: "Catar",
-    awayTeam: "Suiza",
-    homeFlag: "🇶🇦",
-    awayFlag: "🇨🇭",
-    stage: "Grupo B",
-    kickoff: Timestamp.fromDate(new Date("2026-06-13T13:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  },
-  {
-    id: "seed_9",
-    homeTeam: "Suiza",
-    awayTeam: "Bosnia y Herzegovina",
-    homeFlag: "🇨🇭",
-    awayFlag: "🇧🇦",
-    stage: "Grupo B",
-    kickoff: Timestamp.fromDate(new Date("2026-06-18T15:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  },
-  {
-    id: "seed_10",
-    homeTeam: "Canadá",
-    awayTeam: "Catar",
-    homeFlag: "🇨🇦",
-    awayFlag: "🇶🇦",
-    stage: "Grupo B",
-    kickoff: Timestamp.fromDate(new Date("2026-06-18T19:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  },
-  {
-    id: "seed_11",
-    homeTeam: "Bosnia y Herzegovina",
-    awayTeam: "Catar",
-    homeFlag: "🇧🇦",
-    awayFlag: "🇶🇦",
-    stage: "Grupo B",
-    kickoff: Timestamp.fromDate(new Date("2026-06-24T19:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  },
-  {
-    id: "seed_12",
-    homeTeam: "Suiza",
-    awayTeam: "Canadá",
-    homeFlag: "🇨🇭",
-    awayFlag: "🇨🇦",
-    stage: "Grupo B",
-    kickoff: Timestamp.fromDate(new Date("2026-06-24T19:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  },
+    // ======================
+    // GRUPO B
+    // ======================
+    {
+        id: "seed_7",
+        homeTeam: "Canadá",
+        awayTeam: "Bosnia y Herzegovina",
+        homeFlag: "🇨🇦",
+        awayFlag: "🇧🇦",
+        stage: "Grupo B",
+        kickoff: Timestamp.fromDate(new Date("2026-06-12T13:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
+    {
+        id: "seed_8",
+        homeTeam: "Catar",
+        awayTeam: "Suiza",
+        homeFlag: "🇶🇦",
+        awayFlag: "🇨🇭",
+        stage: "Grupo B",
+        kickoff: Timestamp.fromDate(new Date("2026-06-13T13:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
+    {
+        id: "seed_9",
+        homeTeam: "Suiza",
+        awayTeam: "Bosnia y Herzegovina",
+        homeFlag: "🇨🇭",
+        awayFlag: "🇧🇦",
+        stage: "Grupo B",
+        kickoff: Timestamp.fromDate(new Date("2026-06-18T15:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
+    {
+        id: "seed_10",
+        homeTeam: "Canadá",
+        awayTeam: "Catar",
+        homeFlag: "🇨🇦",
+        awayFlag: "🇶🇦",
+        stage: "Grupo B",
+        kickoff: Timestamp.fromDate(new Date("2026-06-18T19:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
+    {
+        id: "seed_11",
+        homeTeam: "Bosnia y Herzegovina",
+        awayTeam: "Catar",
+        homeFlag: "🇧🇦",
+        awayFlag: "🇶🇦",
+        stage: "Grupo B",
+        kickoff: Timestamp.fromDate(new Date("2026-06-24T19:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
+    {
+        id: "seed_12",
+        homeTeam: "Suiza",
+        awayTeam: "Canadá",
+        homeFlag: "🇨🇭",
+        awayFlag: "🇨🇦",
+        stage: "Grupo B",
+        kickoff: Timestamp.fromDate(new Date("2026-06-24T19:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
 
-  // ======================
-  // GRUPO C
-  // ======================
-  {
-    id: "seed_13",
-    homeTeam: "Brasil",
-    awayTeam: "Marruecos",
-    homeFlag: "🇧🇷",
-    awayFlag: "🇲🇦",
-    stage: "Grupo C",
-    kickoff: Timestamp.fromDate(new Date("2026-06-13T16:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  },
-  {
-    id: "seed_14",
-    homeTeam: "Haití",
-    awayTeam: "Escocia",
-    homeFlag: "🇭🇹",
-    awayFlag: "🏴",
-    stage: "Grupo C",
-    kickoff: Timestamp.fromDate(new Date("2026-06-13T19:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  },
-  {
-    id: "seed_15",
-    homeTeam: "Brasil",
-    awayTeam: "Haití",
-    homeFlag: "🇧🇷",
-    awayFlag: "🇭🇹",
-    stage: "Grupo C",
-    kickoff: Timestamp.fromDate(new Date("2026-06-20T19:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  },
-  {
-    id: "seed_16",
-    homeTeam: "Marruecos",
-    awayTeam: "Escocia",
-    homeFlag: "🇲🇦",
-    awayFlag: "🏴",
-    stage: "Grupo C",
-    kickoff: Timestamp.fromDate(new Date("2026-06-20T18:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  },
-  {
-    id: "seed_17",
-    homeTeam: "Escocia",
-    awayTeam: "Brasil",
-    homeFlag: "🏴",
-    awayFlag: "🇧🇷",
-    stage: "Grupo C",
-    kickoff: Timestamp.fromDate(new Date("2026-06-26T20:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  },
-  {
-    id: "seed_18",
-    homeTeam: "Marruecos",
-    awayTeam: "Haití",
-    homeFlag: "🇲🇦",
-    awayFlag: "🇭🇹",
-    stage: "Grupo C",
-    kickoff: Timestamp.fromDate(new Date("2026-06-26T20:00:00-05:00")),
-    status: "scheduled",
-    homeScore: null,
-    awayScore: null
-  }
+    // ======================
+    // GRUPO C
+    // ======================
+    {
+        id: "seed_13",
+        homeTeam: "Brasil",
+        awayTeam: "Marruecos",
+        homeFlag: "🇧🇷",
+        awayFlag: "🇲🇦",
+        stage: "Grupo C",
+        kickoff: Timestamp.fromDate(new Date("2026-06-13T16:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
+    {
+        id: "seed_14",
+        homeTeam: "Haití",
+        awayTeam: "Escocia",
+        homeFlag: "🇭🇹",
+        awayFlag: "🏴",
+        stage: "Grupo C",
+        kickoff: Timestamp.fromDate(new Date("2026-06-13T19:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
+    {
+        id: "seed_15",
+        homeTeam: "Brasil",
+        awayTeam: "Haití",
+        homeFlag: "🇧🇷",
+        awayFlag: "🇭🇹",
+        stage: "Grupo C",
+        kickoff: Timestamp.fromDate(new Date("2026-06-20T19:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
+    {
+        id: "seed_16",
+        homeTeam: "Marruecos",
+        awayTeam: "Escocia",
+        homeFlag: "🇲🇦",
+        awayFlag: "🏴",
+        stage: "Grupo C",
+        kickoff: Timestamp.fromDate(new Date("2026-06-20T18:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
+    {
+        id: "seed_17",
+        homeTeam: "Escocia",
+        awayTeam: "Brasil",
+        homeFlag: "🏴",
+        awayFlag: "🇧🇷",
+        stage: "Grupo C",
+        kickoff: Timestamp.fromDate(new Date("2026-06-26T20:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
+    {
+        id: "seed_18",
+        homeTeam: "Marruecos",
+        awayTeam: "Haití",
+        homeFlag: "🇲🇦",
+        awayFlag: "🇭🇹",
+        stage: "Grupo C",
+        kickoff: Timestamp.fromDate(new Date("2026-06-26T20:00:00-05:00")),
+        status: "scheduled",
+        homeScore: null,
+        awayScore: null
+    },
+    // ======================
+    // GRUPO D
+    // ======================
+    { id: "seed_19", homeTeam: "Estados Unidos", awayTeam: "Paraguay", homeFlag: "🇺🇸", awayFlag: "🇵🇾", stage: "Grupo D", kickoff: Timestamp.fromDate(new Date("2026-06-14T18:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_20", homeTeam: "Australia", awayTeam: "Turquía", homeFlag: "🇦🇺", awayFlag: "🇹🇷", stage: "Grupo D", kickoff: Timestamp.fromDate(new Date("2026-06-14T21:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_21", homeTeam: "Estados Unidos", awayTeam: "Australia", homeFlag: "🇺🇸", awayFlag: "🇦🇺", stage: "Grupo D", kickoff: Timestamp.fromDate(new Date("2026-06-21T20:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_22", homeTeam: "Turquía", awayTeam: "Paraguay", homeFlag: "🇹🇷", awayFlag: "🇵🇾", stage: "Grupo D", kickoff: Timestamp.fromDate(new Date("2026-06-21T17:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_23", homeTeam: "Paraguay", awayTeam: "Australia", homeFlag: "🇵🇾", awayFlag: "🇦🇺", stage: "Grupo D", kickoff: Timestamp.fromDate(new Date("2026-06-26T19:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_24", homeTeam: "Turquía", awayTeam: "Estados Unidos", homeFlag: "🇹🇷", awayFlag: "🇺🇸", stage: "Grupo D", kickoff: Timestamp.fromDate(new Date("2026-06-26T19:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+
+    // ======================
+    // GRUPO E
+    // ======================
+    { id: "seed_25", homeTeam: "Alemania", awayTeam: "Curazao", homeFlag: "🇩🇪", awayFlag: "🇨🇼", stage: "Grupo E", kickoff: Timestamp.fromDate(new Date("2026-06-14T13:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_26", homeTeam: "Costa de Marfil", awayTeam: "Ecuador", homeFlag: "🇨🇮", awayFlag: "🇪🇨", stage: "Grupo E", kickoff: Timestamp.fromDate(new Date("2026-06-14T16:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_27", homeTeam: "Alemania", awayTeam: "Costa de Marfil", homeFlag: "🇩🇪", awayFlag: "🇨🇮", stage: "Grupo E", kickoff: Timestamp.fromDate(new Date("2026-06-20T16:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_28", homeTeam: "Ecuador", awayTeam: "Curazao", homeFlag: "🇪🇨", awayFlag: "🇨🇼", stage: "Grupo E", kickoff: Timestamp.fromDate(new Date("2026-06-20T13:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_29", homeTeam: "Curazao", awayTeam: "Costa de Marfil", homeFlag: "🇨🇼", awayFlag: "🇨🇮", stage: "Grupo E", kickoff: Timestamp.fromDate(new Date("2026-06-26T18:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_30", homeTeam: "Ecuador", awayTeam: "Alemania", homeFlag: "🇪🇨", awayFlag: "🇩🇪", stage: "Grupo E", kickoff: Timestamp.fromDate(new Date("2026-06-26T18:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+
+    // ======================
+    // GRUPO F
+    // ======================
+    { id: "seed_31", homeTeam: "Países Bajos", awayTeam: "Japón", homeFlag: "🇳🇱", awayFlag: "🇯🇵", stage: "Grupo F", kickoff: Timestamp.fromDate(new Date("2026-06-15T13:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_32", homeTeam: "Suecia", awayTeam: "Túnez", homeFlag: "🇸🇪", awayFlag: "🇹🇳", stage: "Grupo F", kickoff: Timestamp.fromDate(new Date("2026-06-15T16:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_33", homeTeam: "Países Bajos", awayTeam: "Suecia", homeFlag: "🇳🇱", awayFlag: "🇸🇪", stage: "Grupo F", kickoff: Timestamp.fromDate(new Date("2026-06-21T16:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_34", homeTeam: "Túnez", awayTeam: "Japón", homeFlag: "🇹🇳", awayFlag: "🇯🇵", stage: "Grupo F", kickoff: Timestamp.fromDate(new Date("2026-06-21T13:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_35", homeTeam: "Japón", awayTeam: "Suecia", homeFlag: "🇯🇵", awayFlag: "🇸🇪", stage: "Grupo F", kickoff: Timestamp.fromDate(new Date("2026-06-27T17:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_36", homeTeam: "Túnez", awayTeam: "Países Bajos", homeFlag: "🇹🇳", awayFlag: "🇳🇱", stage: "Grupo F", kickoff: Timestamp.fromDate(new Date("2026-06-27T17:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+
+    // ======================
+    // GRUPO G
+    // ======================
+    { id: "seed_37", homeTeam: "Bélgica", awayTeam: "Egipto", homeFlag: "🇧🇪", awayFlag: "🇪🇬", stage: "Grupo G", kickoff: Timestamp.fromDate(new Date("2026-06-15T19:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_38", homeTeam: "Irán", awayTeam: "Nueva Zelanda", homeFlag: "🇮🇷", awayFlag: "🇳🇿", stage: "Grupo G", kickoff: Timestamp.fromDate(new Date("2026-06-15T22:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_39", homeTeam: "Bélgica", awayTeam: "Irán", homeFlag: "🇧🇪", awayFlag: "🇮🇷", stage: "Grupo G", kickoff: Timestamp.fromDate(new Date("2026-06-22T18:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_40", homeTeam: "Nueva Zelanda", awayTeam: "Egipto", homeFlag: "🇳🇿", awayFlag: "🇪🇬", stage: "Grupo G", kickoff: Timestamp.fromDate(new Date("2026-06-22T15:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_41", homeTeam: "Egipto", awayTeam: "Irán", homeFlag: "🇪🇬", awayFlag: "🇮🇷", stage: "Grupo G", kickoff: Timestamp.fromDate(new Date("2026-06-27T20:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_42", homeTeam: "Nueva Zelanda", awayTeam: "Bélgica", homeFlag: "🇳🇿", awayFlag: "🇧🇪", stage: "Grupo G", kickoff: Timestamp.fromDate(new Date("2026-06-27T20:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+
+    // ======================
+    // GRUPO H
+    // ======================
+    { id: "seed_43", homeTeam: "España", awayTeam: "Cabo Verde", homeFlag: "🇪🇸", awayFlag: "🇨🇻", stage: "Grupo H", kickoff: Timestamp.fromDate(new Date("2026-06-16T13:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_44", homeTeam: "Arabia Saudita", awayTeam: "Uruguay", homeFlag: "🇸🇦", awayFlag: "🇺🇾", stage: "Grupo H", kickoff: Timestamp.fromDate(new Date("2026-06-16T16:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_45", homeTeam: "España", awayTeam: "Arabia Saudita", homeFlag: "🇪🇸", awayFlag: "🇸🇦", stage: "Grupo H", kickoff: Timestamp.fromDate(new Date("2026-06-22T16:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_46", homeTeam: "Uruguay", awayTeam: "Cabo Verde", homeFlag: "🇺🇾", awayFlag: "🇨🇻", stage: "Grupo H", kickoff: Timestamp.fromDate(new Date("2026-06-22T13:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_47", homeTeam: "Cabo Verde", awayTeam: "Arabia Saudita", homeFlag: "🇨🇻", awayFlag: "🇸🇦", stage: "Grupo H", kickoff: Timestamp.fromDate(new Date("2026-06-27T18:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_48", homeTeam: "Uruguay", awayTeam: "España", homeFlag: "🇺🇾", awayFlag: "🇪🇸", stage: "Grupo H", kickoff: Timestamp.fromDate(new Date("2026-06-27T18:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+
+    // ======================
+    // GRUPO I
+    // ======================
+    { id: "seed_49", homeTeam: "Francia", awayTeam: "Senegal", homeFlag: "🇫🇷", awayFlag: "🇸🇳", stage: "Grupo I", kickoff: Timestamp.fromDate(new Date("2026-06-16T19:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_50", homeTeam: "Irak", awayTeam: "Noruega", homeFlag: "🇮🇶", awayFlag: "🇳🇴", stage: "Grupo I", kickoff: Timestamp.fromDate(new Date("2026-06-16T22:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_51", homeTeam: "Francia", awayTeam: "Irak", homeFlag: "🇫🇷", awayFlag: "🇮🇶", stage: "Grupo I", kickoff: Timestamp.fromDate(new Date("2026-06-23T18:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_52", homeTeam: "Noruega", awayTeam: "Senegal", homeFlag: "🇳🇴", awayFlag: "🇸🇳", stage: "Grupo I", kickoff: Timestamp.fromDate(new Date("2026-06-23T15:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_53", homeTeam: "Senegal", awayTeam: "Irak", homeFlag: "🇸🇳", awayFlag: "🇮🇶", stage: "Grupo I", kickoff: Timestamp.fromDate(new Date("2026-06-27T21:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_54", homeTeam: "Noruega", awayTeam: "Francia", homeFlag: "🇳🇴", awayFlag: "🇫🇷", stage: "Grupo I", kickoff: Timestamp.fromDate(new Date("2026-06-27T21:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+
+    // ======================
+    // GRUPO J
+    // ======================
+    { id: "seed_55", homeTeam: "Argentina", awayTeam: "Argelia", homeFlag: "🇦🇷", awayFlag: "🇩🇿", stage: "Grupo J", kickoff: Timestamp.fromDate(new Date("2026-06-17T16:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_56", homeTeam: "Austria", awayTeam: "Jordania", homeFlag: "🇦🇹", awayFlag: "🇯🇴", stage: "Grupo J", kickoff: Timestamp.fromDate(new Date("2026-06-17T13:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_57", homeTeam: "Argentina", awayTeam: "Austria", homeFlag: "🇦🇷", awayFlag: "🇦🇹", stage: "Grupo J", kickoff: Timestamp.fromDate(new Date("2026-06-23T19:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_58", homeTeam: "Jordania", awayTeam: "Argelia", homeFlag: "🇯🇴", awayFlag: "🇩🇿", stage: "Grupo J", kickoff: Timestamp.fromDate(new Date("2026-06-23T16:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_59", homeTeam: "Argelia", awayTeam: "Austria", homeFlag: "🇩🇿", awayFlag: "🇦🇹", stage: "Grupo J", kickoff: Timestamp.fromDate(new Date("2026-06-27T16:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_60", homeTeam: "Jordania", awayTeam: "Argentina", homeFlag: "🇯🇴", awayFlag: "🇦🇷", stage: "Grupo J", kickoff: Timestamp.fromDate(new Date("2026-06-27T16:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+
+    // ======================
+    // GRUPO K
+    // ======================
+    { id: "seed_61", homeTeam: "Portugal", awayTeam: "RD Congo", homeFlag: "🇵🇹", awayFlag: "🇨🇩", stage: "Grupo K", kickoff: Timestamp.fromDate(new Date("2026-06-17T19:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_62", homeTeam: "Uzbekistán", awayTeam: "Colombia", homeFlag: "🇺🇿", awayFlag: "🇨🇴", stage: "Grupo K", kickoff: Timestamp.fromDate(new Date("2026-06-17T22:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_63", homeTeam: "Portugal", awayTeam: "Uzbekistán", homeFlag: "🇵🇹", awayFlag: "🇺🇿", stage: "Grupo K", kickoff: Timestamp.fromDate(new Date("2026-06-24T18:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_64", homeTeam: "Colombia", awayTeam: "RD Congo", homeFlag: "🇨🇴", awayFlag: "🇨🇩", stage: "Grupo K", kickoff: Timestamp.fromDate(new Date("2026-06-24T15:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_65", homeTeam: "RD Congo", awayTeam: "Uzbekistán", homeFlag: "🇨🇩", awayFlag: "🇺🇿", stage: "Grupo K", kickoff: Timestamp.fromDate(new Date("2026-06-28T18:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_66", homeTeam: "Colombia", awayTeam: "Portugal", homeFlag: "🇨🇴", awayFlag: "🇵🇹", stage: "Grupo K", kickoff: Timestamp.fromDate(new Date("2026-06-28T18:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+
+    // ======================
+    // GRUPO L
+    // ======================
+    { id: "seed_67", homeTeam: "Inglaterra", awayTeam: "Croacia", homeFlag: "🏴", awayFlag: "🇭🇷", stage: "Grupo L", kickoff: Timestamp.fromDate(new Date("2026-06-18T13:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_68", homeTeam: "Ghana", awayTeam: "Panamá", homeFlag: "🇬🇭", awayFlag: "🇵🇦", stage: "Grupo L", kickoff: Timestamp.fromDate(new Date("2026-06-18T16:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_69", homeTeam: "Inglaterra", awayTeam: "Ghana", homeFlag: "🏴", awayFlag: "🇬🇭", stage: "Grupo L", kickoff: Timestamp.fromDate(new Date("2026-06-24T21:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_70", homeTeam: "Panamá", awayTeam: "Croacia", homeFlag: "🇵🇦", awayFlag: "🇭🇷", stage: "Grupo L", kickoff: Timestamp.fromDate(new Date("2026-06-24T18:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_71", homeTeam: "Croacia", awayTeam: "Ghana", homeFlag: "🇭🇷", awayFlag: "🇬🇭", stage: "Grupo L", kickoff: Timestamp.fromDate(new Date("2026-06-28T20:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null },
+    { id: "seed_72", homeTeam: "Panamá", awayTeam: "Inglaterra", homeFlag: "🇵🇦", awayFlag: "🏴", stage: "Grupo L", kickoff: Timestamp.fromDate(new Date("2026-06-28T20:00:00-05:00")), status: "scheduled", homeScore: null, awayScore: null }
 
 ];

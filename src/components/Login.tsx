@@ -11,9 +11,10 @@ import { useLanguage } from "../context/LanguageContext";
 
 interface LoginProps {
   onLoginSuccess?: () => void;
+  onViewTopScorers?: () => void;
 }
 
-export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
+export const Login: React.FC<LoginProps> = ({ onLoginSuccess, onViewTopScorers }) => {
   const { t } = useLanguage();
   const [isSignUp, setIsSignUp] = useState(false);
   const [email, setEmail] = useState("");
@@ -171,6 +172,17 @@ export const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
       >
         <span style={{ fontSize: "1.2rem" }}>🌐</span> {t("sign_in_google")}
       </button>
+
+      {onViewTopScorers && (
+        <button
+          className="btn btn-secondary"
+          type="button"
+          onClick={onViewTopScorers}
+          style={{ width: "100%", marginTop: "1rem" }}
+        >
+          {t("view_top_scores")}
+        </button>
+      )}
 
       <div className="text-center" style={{ marginTop: "1.5rem" }}>
         <button 

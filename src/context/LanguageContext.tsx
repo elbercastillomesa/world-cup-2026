@@ -59,6 +59,11 @@ const translations: TranslationDictionary = {
   exact_count: { es: "Marcadores Exactos (3 pts)", en: "Exact Scores (3 pts)" },
   outcome_count: { es: "Ganador/Empate (1 pt)", en: "Winner/Draw (1 pt)" },
   no_users: { es: "Aún no hay usuarios en la tabla", en: "No users in the leaderboard yet" },
+  view_top_scores: { es: "Ver mejores puntajes", en: "View top scores" },
+  back_to_login: { es: "Volver al inicio de sesión", en: "Back to login" },
+  top_scores_title: { es: "Mejores puntajes", en: "Top Scorers" },
+  top_scores_subtitle: { es: "Mira quién está liderando con la mejor puntuación", en: "See who is leading with the highest points" },
+  top_scores_no_users: { es: "No hay puntajes para mostrar todavía.", en: "No scores to display yet." },
 
   // Rules view
   rules_title: { es: "Reglamento del Juego", en: "Game Rules" },
