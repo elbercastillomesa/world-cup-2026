@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { 
-  collection, 
-  query, 
-  onSnapshot, 
-  doc, 
+import {
+  collection,
+  query,
+  onSnapshot,
+  doc,
   setDoc,
-  updateDoc, 
-  deleteDoc, 
+  updateDoc,
+  deleteDoc,
   getDocs,
   writeBatch,
-  Timestamp 
+  Timestamp
 } from "firebase/firestore";
 import { db } from "../firebase";
 import { useLanguage } from "../context/LanguageContext";
+import { seedData as groupPhaseMatches } from "../utils/seedMatches";
 import { Trash2, Edit, Save, CheckCircle, Database } from "lucide-react";
 
 interface Match {
@@ -166,7 +167,7 @@ export const Admin: React.FC = () => {
   const calculatePointsForMatch = async (matchId: string) => {
     const scores = scoreInputs[matchId];
     if (!scores || scores.home === "" || scores.away === "") return;
-    
+
     const hScore = parseInt(scores.home);
     const aScore = parseInt(scores.away);
 
@@ -184,7 +185,7 @@ export const Admin: React.FC = () => {
       // 2. Fetch all predictions for this match
       const predsSnapshot = await getDocs(collection(db, "predictions"));
       const batch = writeBatch(db);
-      
+
       const matchPredictions = predsSnapshot.docs.filter(
         doc => doc.data().matchId === matchId
       );
@@ -242,7 +243,7 @@ export const Admin: React.FC = () => {
     const usersSnap = await getDocs(collection(db, "users"));
 
     const userStats: Record<string, { points: number; exact: number; outcome: number }> = {};
-    
+
     // Initialize stats map for all existing users
     usersSnap.forEach((uDoc) => {
       userStats[uDoc.id] = { points: 0, exact: 0, outcome: 0 };
@@ -277,56 +278,7 @@ export const Admin: React.FC = () => {
     if (!window.confirm("¿Deseas sembrar partidos iniciales de prueba?")) return;
 
     // Define seed matches using GMT-5 offset ('-05:00')
-    const seedData = [
-      {
-        id: "seed_1",
-        homeTeam: "México",
-        awayTeam: "Colombia",
-        homeFlag: "🇲🇽",
-        awayFlag: "🇨🇴",
-        stage: "Grupo A",
-        kickoff: Timestamp.fromDate(new Date("2026-06-11T13:00:00-05:00")), // Today (Locked)
-        status: "scheduled",
-        homeScore: null,
-        awayScore: null
-      },
-      {
-        id: "seed_2",
-        homeTeam: "United States",
-        awayTeam: "Italia",
-        homeFlag: "🇺🇸",
-        awayFlag: "🇮🇹",
-        stage: "Grupo B",
-        kickoff: Timestamp.fromDate(new Date("2026-06-12T15:00:00-05:00")), // Tomorrow (Open)
-        status: "scheduled",
-        homeScore: null,
-        awayScore: null
-      },
-      {
-        id: "seed_3",
-        homeTeam: "Canadá",
-        awayTeam: "Marruecos",
-        homeFlag: "🇨🇦",
-        awayFlag: "🇲🇦",
-        stage: "Grupo A",
-        kickoff: Timestamp.fromDate(new Date("2026-06-12T18:00:00-05:00")), // Tomorrow (Open)
-        status: "scheduled",
-        homeScore: null,
-        awayScore: null
-      },
-      {
-        id: "seed_4",
-        homeTeam: "España",
-        awayTeam: "Japón",
-        homeFlag: "🇪🇸",
-        awayFlag: "🇯🇵",
-        stage: "Grupo B",
-        kickoff: Timestamp.fromDate(new Date("2026-06-13T20:00:00-05:00")), // Saturday (Open)
-        status: "scheduled",
-        homeScore: null,
-        awayScore: null
-      }
-    ];
+    const seedData = groupPhaseMatches;
 
     try {
       const batch = writeBatch(db);
@@ -355,11 +307,11 @@ export const Admin: React.FC = () => {
     <div className="flex flex-col gap-4 animate-fade-in">
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <h2>{t("admin_title")}</h2>
-        
+
         {/* Seed Button */}
-        <button 
-          type="button" 
-          className="btn btn-secondary" 
+        <button
+          type="button"
+          className="btn btn-secondary"
           onClick={seedMatches}
           style={{ gap: "0.5rem" }}
         >
@@ -369,12 +321,12 @@ export const Admin: React.FC = () => {
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "1.5rem" }}>
-        
+
         {/* 1. Add / Edit Match Form */}
         <div className="glass-card">
           <h3>{editingMatchId ? t("edit_match_title") : t("add_match_title")}</h3>
           <form onSubmit={handleSubmitMatch} className="flex flex-col gap-2 mt-4">
-            
+
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
               <div className="form-group">
                 <label className="form-label" htmlFor="hTeam">{t("home_team")}</label>
@@ -413,9 +365,9 @@ export const Admin: React.FC = () => {
                 <span>{t("submit_match")}</span>
               </button>
               {editingMatchId && (
-                <button 
-                  type="button" 
-                  className="btn btn-secondary" 
+                <button
+                  type="button"
+                  className="btn btn-secondary"
                   onClick={() => {
                     setEditingMatchId(null);
                     setHomeTeam("");
@@ -435,7 +387,7 @@ export const Admin: React.FC = () => {
         {/* 2. Matches List & Score Inputting */}
         <div className="glass-card" style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
           <h3>{t("tab_matches")}</h3>
-          
+
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem", maxHeight: "450px", overflowY: "auto", paddingRight: "0.25rem" }}>
             {matches.length === 0 ? (
               <p style={{ color: "var(--text-light)", fontStyle: "italic" }}>{language === "es" ? "No hay partidos" : "No matches"}</p>
@@ -445,11 +397,11 @@ export const Admin: React.FC = () => {
                 const cStatus = calcStatus[match.id];
 
                 return (
-                  <div 
-                    key={match.id} 
-                    style={{ 
-                      padding: "0.75rem", 
-                      borderRadius: "var(--radius-md)", 
+                  <div
+                    key={match.id}
+                    style={{
+                      padding: "0.75rem",
+                      borderRadius: "var(--radius-md)",
                       background: "light-dark(rgba(0,0,0,0.015), rgba(255,255,255,0.015))",
                       border: "1px solid var(--border-card)"
                     }}
@@ -465,7 +417,7 @@ export const Admin: React.FC = () => {
                       <span style={{ fontWeight: 600 }}>
                         {match.homeFlag} {match.homeTeam} vs {match.awayTeam} {match.awayFlag}
                       </span>
-                      
+
                       <div className="flex gap-2">
                         <button type="button" className="btn btn-secondary" style={{ padding: "0.25rem", minWidth: "32px", minHeight: "32px" }} onClick={() => handleEditMatch(match)} title="Editar">
                           <Edit size={14} />
@@ -477,8 +429,8 @@ export const Admin: React.FC = () => {
                     </div>
 
                     {/* Score Entry Panel */}
-                    <div 
-                      style={{ 
+                    <div
+                      style={{
                         marginTop: "0.75rem",
                         padding: "0.5rem",
                         borderRadius: "var(--radius-sm)",
@@ -492,7 +444,7 @@ export const Admin: React.FC = () => {
                       <span style={{ fontSize: "0.8rem", color: "var(--text-sub)", fontWeight: 500 }}>
                         {t("set_result_title")}
                       </span>
-                      
+
                       <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
                         <input
                           type="text"
