@@ -239,14 +239,44 @@ export const Dashboard: React.FC<DashboardProps> = ({ currentUser }) => {
     return `${minutes}m`;
   };
 
-  // Unique list of stages for filtering
-  const stages = ["all", ...new Set(matches.map(m => m.stage))];
+  const groupOrder = ["a","b","c","d","e","f","g","h","i","j","k","l"];
+  const getGroupIndex = (stage: string) => {
+    const normalized = stage.trim().toLowerCase();
+    const match = normalized.match(/^(?:grupo|group)\s*([a-l])$/);
+    if (!match) return Infinity;
+    return groupOrder.indexOf(match[1]);
+  };
 
-  const twoDaysAgo = new Date(currentTime.getTime() - 2 * 24 * 60 * 60 * 1000);
+  const groupStages = Array.from(
+    new Set(matches.map((m) => m.stage).filter((stage) => getGroupIndex(stage) !== Infinity))
+  ).sort((a, b) => getGroupIndex(a) - getGroupIndex(b));
+
+  const stages = ["all", ...groupStages];
+
+  const startOfDay = (date: Date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  const endOfDay = (date: Date) => new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59, 999);
+
+  const yesterdayStart = new Date(startOfDay(currentTime));
+  yesterdayStart.setDate(yesterdayStart.getDate() - 1);
+  const tomorrowEnd = new Date(endOfDay(currentTime));
+  tomorrowEnd.setDate(tomorrowEnd.getDate() + 1);
+
+  const sortByKickoff = (a: Match, b: Match) => {
+    const aTime = a.kickoff?.toDate().getTime() || 0;
+    const bTime = b.kickoff?.toDate().getTime() || 0;
+    return aTime - bTime;
+  };
 
   const filteredMatches = selectedStage === "all"
-    ? matches.filter((m) => m.kickoff?.toDate() >= twoDaysAgo)
-    : matches.filter((m) => m.stage === selectedStage && m.kickoff?.toDate() >= twoDaysAgo);
+    ? matches
+        .filter((m) => {
+          const kickoff = m.kickoff?.toDate();
+          return kickoff && kickoff >= yesterdayStart && kickoff <= tomorrowEnd;
+        })
+        .sort(sortByKickoff)
+    : matches
+        .filter((m) => m.stage === selectedStage)
+        .sort(sortByKickoff);
 
   return (
     <div className="animate-fade-in">
@@ -264,6 +294,14 @@ export const Dashboard: React.FC<DashboardProps> = ({ currentUser }) => {
             </button>
           ))}
         </div>
+      )}
+
+      {selectedStage === "all" && (
+        <p style={{ color: "var(--text-sub)", fontSize: "0.9rem", margin: "0.75rem 0 1rem" }}>
+          {language === "es"
+            ? "Mostrando partidos de ayer hasta mañana"
+            : "Showing matches from yesterday through tomorrow"}
+        </p>
       )}
 
       {filteredMatches.length === 0 ? (

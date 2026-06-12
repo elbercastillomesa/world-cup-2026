@@ -34,7 +34,7 @@ const translations: TranslationDictionary = {
   // Match List & Predictions
   kickoff_time: { es: "Hora de inicio local", en: "Local kickoff time" },
   match_locked: { es: "🔒 Pronóstico cerrado", en: "🔒 Predictions locked" },
-  match_open: { es: "✏️ Pronóstico abierto", en: "✏️ Predictions open" };
+  match_open: { es: "✏️ Pronóstico abierto", en: "✏️ Predictions open" },
   match_saved: { es: "¡Pronóstico guardado!", en: "Prediction saved!" },
   predict_prompt: { es: "Ingresa tu predicción", en: "Enter your prediction" },
   save_prediction: { es: "Guardar", en: "Save" },
@@ -93,7 +93,7 @@ const translations: TranslationDictionary = {
   home_flag: { es: "Bandera Local (Emoji)", en: "Home Flag (Emoji)" },
   away_flag: { es: "Bandera Visitante (Emoji)", en: "Away Flag (Emoji)" },
   kickoff_label: { es: "Fecha y Hora de Kickoff (local)", en: "Kickoff Date & Time (local)" },
-  submit_match: { es: "Guardar Partido", en: "Save Match" };
+  submit_match: { es: "Guardar Partido", en: "Save Match" },
   set_result_title: { es: "Registrar Marcador Final", en: "Enter Final Score" },
   recalculate_btn: { es: "Finalizar y Calcular Puntos", en: "Finish and Calculate Points" },
   actions: { es: "Acciones", en: "Actions" },
