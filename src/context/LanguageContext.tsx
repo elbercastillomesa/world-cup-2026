@@ -32,9 +32,9 @@ const translations: TranslationDictionary = {
   tab_admin: { es: "Administración", en: "Admin" },
 
   // Match List & Predictions
-  kickoff_time: { es: "Hora de inicio (GMT-5)", en: "Kickoff Time (GMT-5)" },
+  kickoff_time: { es: "Hora de inicio local", en: "Local kickoff time" },
   match_locked: { es: "🔒 Pronóstico cerrado", en: "🔒 Predictions locked" },
-  match_open: { es: "✏️ Pronóstico abierto", en: "✏️ Predictions open" },
+  match_open: { es: "✏️ Pronóstico abierto", en: "✏️ Predictions open" };
   match_saved: { es: "¡Pronóstico guardado!", en: "Prediction saved!" },
   predict_prompt: { es: "Ingresa tu predicción", en: "Enter your prediction" },
   save_prediction: { es: "Guardar", en: "Save" },
@@ -81,19 +81,19 @@ const translations: TranslationDictionary = {
   rule_3_title: { es: "❌ 0 Puntos: Incorrecto", en: "❌ 0 Points: Incorrect" },
   rule_3_desc: { es: "No aciertas ni el ganador/empate ni los goles. Ejemplo: Pronosticas 1-1, el marcador final es 2-0.", en: "You don't guess the winner/draw or the score. Example: You predict 1-1 and the final score is 2-0." },
   rule_lock_title: { es: "🔒 Cierre Automático", en: "🔒 Automatic Lock" },
-  rule_lock_desc: { es: "Los partidos se cierran automáticamente exactamente a la hora del pitazo inicial (GMT-5). No se permiten cambios después.", en: "Matches lock automatically at kickoff time (GMT-5). No changes allowed after." },
+  rule_lock_desc: { es: "Los partidos se cierran automáticamente exactamente a la hora local del pitazo inicial. No se permiten cambios después.", en: "Matches lock automatically at local kickoff time. No changes allowed after." },
 
   // Admin View
   admin_title: { es: "Panel de Administración", en: "Admin Dashboard" },
-  seed_matches_btn: { es: "Sembrar Partidos del Mundial 2026 (GMT-5)", en: "Seed 2026 World Cup Matches (GMT-5)" },
+  seed_matches_btn: { es: "Sembrar Partidos del Mundial 2026", en: "Seed 2026 World Cup Matches" },
   add_match_title: { es: "Agregar Partido", en: "Add Match" },
   edit_match_title: { es: "Editar Partido", en: "Edit Match" },
   home_team: { es: "Equipo Local", en: "Home Team" },
   away_team: { es: "Equipo Visitante", en: "Away Team" },
   home_flag: { es: "Bandera Local (Emoji)", en: "Home Flag (Emoji)" },
   away_flag: { es: "Bandera Visitante (Emoji)", en: "Away Flag (Emoji)" },
-  kickoff_label: { es: "Fecha y Hora de Kickoff (GMT-5)", en: "Kickoff Date & Time (GMT-5)" },
-  submit_match: { es: "Guardar Partido", en: "Save Match" },
+  kickoff_label: { es: "Fecha y Hora de Kickoff (local)", en: "Kickoff Date & Time (local)" },
+  submit_match: { es: "Guardar Partido", en: "Save Match" };
   set_result_title: { es: "Registrar Marcador Final", en: "Enter Final Score" },
   recalculate_btn: { es: "Finalizar y Calcular Puntos", en: "Finish and Calculate Points" },
   actions: { es: "Acciones", en: "Actions" },

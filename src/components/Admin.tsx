@@ -64,11 +64,11 @@ export const Admin: React.FC = () => {
           status: data.status || "scheduled"
         });
       });
-      // Sort matches by kickoff
+      // Sort matches by kickoff descending (newest first)
       matchesList.sort((a, b) => {
         const timeA = a.kickoff?.toDate().getTime() || 0;
         const timeB = b.kickoff?.toDate().getTime() || 0;
-        return timeA - timeB;
+        return timeB - timeA;
       });
       setMatches(matchesList);
 
@@ -85,13 +85,14 @@ export const Admin: React.FC = () => {
     return () => unsubscribe();
   }, []);
 
-  // Formats date to local datetime string format for inputs: YYYY-MM-DDTHH:MM
+  // Formats a date to the browser-local datetime-local input value: YYYY-MM-DDTHH:MM
   const dateToInputString = (date: Date) => {
-    // Offset for GMT-5 (America/Bogota)
-    // We adjust the date UTC time by subtracting 5 hours and converting to ISO string
-    const tzOffsetMs = -5 * 60 * 60 * 1000;
-    const adjusted = new Date(date.getTime() + tzOffsetMs);
-    return adjusted.toISOString().slice(0, 16);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
   };
 
   // 2. Add or Update Match
@@ -100,8 +101,8 @@ export const Admin: React.FC = () => {
     if (!homeTeam || !awayTeam || !kickoff) return;
 
     try {
-      // Input datetime is in local user view, we append GMT-5 offset '-05:00' to parse correctly
-      const kickoffDate = new Date(kickoff + "-05:00");
+      // Parse the datetime-local input as the browser local time
+      const kickoffDate = new Date(kickoff);
       const matchData = {
         homeTeam,
         awayTeam,
@@ -273,11 +274,11 @@ export const Admin: React.FC = () => {
     await batch.commit();
   };
 
-  // Seed Initial World Cup Matches (GMT-5 timezone)
+  // Seed Initial World Cup Matches
   const seedMatches = async () => {
     if (!window.confirm("¿Deseas sembrar partidos iniciales de prueba?")) return;
 
-    // Define seed matches using GMT-5 offset ('-05:00')
+    // Define seed matches using explicit kickoff timestamps
     const seedData = groupPhaseMatches;
 
     try {

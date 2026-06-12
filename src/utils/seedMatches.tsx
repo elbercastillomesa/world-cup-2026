@@ -25,8 +25,8 @@ export const seedData = [
     stage: "Grupo A",
     kickoff: Timestamp.fromDate(new Date("2026-06-11T20:00:00-05:00")),
     status: "scheduled",
-    homeScore: null,
-    awayScore: null,
+    homeScore: 2,
+    awayScore: 1,
   },
   {
     id: "seed_3",

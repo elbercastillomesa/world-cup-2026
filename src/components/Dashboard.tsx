@@ -103,11 +103,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ currentUser }) => {
           status: data.status || "scheduled"
         });
       });
-      // Sort matches by kickoff time
+      // Sort matches by kickoff time descending (newest first)
       matchesList.sort((a, b) => {
         const timeA = a.kickoff?.toDate().getTime() || 0;
         const timeB = b.kickoff?.toDate().getTime() || 0;
-        return timeA - timeB;
+        return timeB - timeA;
       });
       setMatches(matchesList);
     });
@@ -203,12 +203,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ currentUser }) => {
     }
   };
 
-  // Format date in GMT-5
+  // Format date in the browser's local timezone
   const formatKickoff = (timestamp: any) => {
     if (!timestamp) return "";
     const date = timestamp.toDate();
     return new Intl.DateTimeFormat(language === "es" ? "es-CO" : "en-US", {
-      timeZone: "America/Bogota", // Enforce America/Bogota (GMT-5)
       day: "2-digit",
       month: "short",
       hour: "2-digit",
@@ -243,9 +242,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ currentUser }) => {
   // Unique list of stages for filtering
   const stages = ["all", ...new Set(matches.map(m => m.stage))];
 
-  const filteredMatches = selectedStage === "all" 
-    ? matches 
-    : matches.filter(m => m.stage === selectedStage);
+  const twoDaysAgo = new Date(currentTime.getTime() - 2 * 24 * 60 * 60 * 1000);
+
+  const filteredMatches = selectedStage === "all"
+    ? matches.filter((m) => m.kickoff?.toDate() >= twoDaysAgo)
+    : matches.filter((m) => m.stage === selectedStage && m.kickoff?.toDate() >= twoDaysAgo);
 
   return (
     <div className="animate-fade-in">
