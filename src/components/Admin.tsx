@@ -39,6 +39,7 @@ export const Admin: React.FC = () => {
   const [stage, setStage] = useState("Group Stage");
   const [kickoff, setKickoff] = useState("");
   const [editingMatchId, setEditingMatchId] = useState<string | null>(null);
+  const [countryFilter, setCountryFilter] = useState("");
 
   // Score Entry state
   const [scoreInputs, setScoreInputs] = useState<Record<string, { home: string; away: string }>>({});
@@ -64,11 +65,11 @@ export const Admin: React.FC = () => {
           status: data.status || "scheduled"
         });
       });
-      // Sort matches by kickoff descending (newest first)
+      // Sort matches by kickoff ascending (earliest first)
       matchesList.sort((a, b) => {
         const timeA = a.kickoff?.toDate().getTime() || 0;
         const timeB = b.kickoff?.toDate().getTime() || 0;
-        return timeB - timeA;
+        return timeA - timeB;
       });
       setMatches(matchesList);
 
@@ -304,6 +305,34 @@ export const Admin: React.FC = () => {
     }
   };
 
+  // Compute yesterday..tomorrow window for admin list (±1 day)
+  const startOfDay = (date: Date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  const endOfDay = (date: Date) => new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59, 999);
+
+  const yesterdayStart = new Date(startOfDay(new Date()));
+  yesterdayStart.setDate(yesterdayStart.getDate() - 1);
+  const tomorrowEnd = new Date(endOfDay(new Date()));
+  tomorrowEnd.setDate(tomorrowEnd.getDate() + 1);
+
+  const filteredMatches = matches
+    .filter((m) => {
+      const kickoff = m.kickoff?.toDate();
+      return kickoff && kickoff >= yesterdayStart && kickoff <= tomorrowEnd;
+    })
+    .sort((a, b) => {
+      const ta = a.kickoff?.toDate().getTime() || 0;
+      const tb = b.kickoff?.toDate().getTime() || 0;
+      return ta - tb;
+    })
+    .filter((m) => {
+      if (!countryFilter || countryFilter.trim() === "") return true;
+      const q = countryFilter.trim().toLowerCase();
+      return (
+        m.homeTeam.toLowerCase().includes(q) ||
+        m.awayTeam.toLowerCase().includes(q)
+      );
+    });
+
   return (
     <div className="flex flex-col gap-4 animate-fade-in">
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -389,11 +418,23 @@ export const Admin: React.FC = () => {
         <div className="glass-card" style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
           <h3>{t("tab_matches")}</h3>
 
+          <div style={{ display: "flex", gap: "0.5rem", alignItems: "center", marginTop: "0.5rem" }}>
+            <input
+              type="text"
+              placeholder={language === "es" ? "Filtrar por país (ej. Colombia)" : "Filter by country (e.g. Colombia)"}
+              value={countryFilter}
+              onChange={(e) => setCountryFilter(e.target.value)}
+              className="form-input"
+              style={{ flex: 1 }}
+            />
+            <button type="button" className="btn btn-secondary" onClick={() => setCountryFilter("")}>{language === "es" ? "Limpiar" : "Clear"}</button>
+          </div>
+
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem", maxHeight: "450px", overflowY: "auto", paddingRight: "0.25rem" }}>
             {matches.length === 0 ? (
               <p style={{ color: "var(--text-light)", fontStyle: "italic" }}>{language === "es" ? "No hay partidos" : "No matches"}</p>
             ) : (
-              matches.map((match) => {
+              filteredMatches.map((match) => {
                 const scores = scoreInputs[match.id] || { home: "", away: "" };
                 const cStatus = calcStatus[match.id];
 

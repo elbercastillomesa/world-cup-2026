@@ -1,73 +1,76 @@
-# React + TypeScript + Vite
+# World Cup 2026 Pool
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript + Vite app for managing and predicting 2026 FIFA World Cup matches.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Admin panel to create, edit, and delete matches.
+- Admin filters for:
+  - Country name search
+  - Match list window of ±1 day from today
+  - Score input and point recalculation for finished matches
+- Dashboard and match display use browser-local kickoff times.
+- Seed data loading from `src/utils/seedMatches.tsx`.
+- Playwright scraper script for extracting FIFA schedule data.
 
-## React Compiler
+## Local Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Build for production:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+## Admin Tab
+
+The Admin UI supports:
+
+- Creating or editing matches with home/away teams, flags, stage, and kickoff datetime.
+- Searching matches by country name.
+- Deleting matches.
+- Entering final results and recalculating prediction points.
+- Seeding initial World Cup matches from seed data.
+
+### Country Filter
+
+Type any part of a home or away country name in the admin filter box to narrow the editable match list.
+
+### Time Window
+
+The admin match list currently shows matches within ±1 day of the current date.
+
+## Scraper
+
+A Playwright scraper script is included in `scripts/scrapeFifaMatches.js` for extracting official FIFA schedule data.
+
+### Install Playwright
+
+```bash
+npm install
+npx playwright install
+```
+
+Install browser dependencies on Linux if needed:
+
+```bash
+npx playwright install-deps
+```
+
+### Run the scraper
+
+```bash
+node scripts/scrapeFifaMatches.js "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/match-schedule-fixtures-results-teams-stadiums"
+```
+
+The script writes `fifa_matches_raw.json` to the repo root.
+
+## Notes
+
+- The app is configured to use Firebase Firestore.
+- `src/components/Admin.tsx` contains admin match editing and filters.
+- `src/utils/seedMatches.tsx` contains the initial seed payload.
